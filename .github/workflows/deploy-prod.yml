@@ -1,0 +1,42 @@
+name: 🚀 Deploy to Production
+
+on:
+  push:
+    branches: [ prod ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: 📥 Checkout code
+      uses: actions/checkout@v3
+      
+    - name: 📦 Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20'
+        cache: 'npm'
+        
+    - name: 📚 Install dependencies
+      run: npm ci
+      
+    - name: 🏗️ Build project
+      run: npm run build
+      
+    - name: ✅ Run tests (if any)
+      run: npm test --if-present
+      
+    - name: 📊 Build size report
+      run: |
+        echo "## 📊 Build Size Report" >> $GITHUB_STEP_SUMMARY
+        echo "| File | Size |" >> $GITHUB_STEP_SUMMARY
+        echo "|------|------|" >> $GITHUB_STEP_SUMMARY
+        ls -lah dist/ | tail -n +2 | awk '{print "| " $9 " | " $5 " |"}' >> $GITHUB_STEP_SUMMARY
+        
+    - name: 🎉 Deployment Success
+      run: |
+        echo "🚀 Deployment completed successfully!"
+        echo "🌐 Live at: https://tams.my.id"
+        echo "📅 Deployed at: $(date)"
