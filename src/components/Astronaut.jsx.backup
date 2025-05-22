@@ -12,10 +12,8 @@ import { useMotionValue, useSpring } from "motion/react";
 import { useFrame } from "@react-three/fiber";
 
 export function Astronaut(props) {
-  console.log("🚀 Astronaut component rendering...");
   const group = useRef();
   const { nodes, materials, animations } = useGLTF(
-  console.log("✅ Model loaded:", { nodes: Object.keys(nodes), materials: Object.keys(materials) });
     "/models/tenhun_falling_spaceman_fanart.glb"
   );
   const { actions } = useAnimations(animations, group);

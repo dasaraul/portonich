@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Astronaut 3D Model Test</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/examples/js/loaders/GLTFLoader.js"></script>
+</head>
+<body>
+    <div id="container" style="width: 100vw; height: 100vh;"></div>
+    <script>
+        console.log("🎮 Starting Three.js test...");
+        
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.getElementById('container').appendChild(renderer.domElement);
+        
+        // Test WebGL
+        console.log("🔍 WebGL supported:", !!renderer.getContext());
+        
+        // Load astronaut model
+        const loader = new THREE.GLTFLoader();
+        loader.load(
+            '/models/tenhun_falling_spaceman_fanart.glb',
+            function(gltf) {
+                console.log("✅ Model loaded successfully:", gltf);
+                scene.add(gltf.scene);
+                
+                // Add lighting
+                const light = new THREE.DirectionalLight(0xffffff, 1);
+                light.position.set(1, 1, 1);
+                scene.add(light);
+                
+                camera.position.z = 5;
+                
+                // Render loop
+                function animate() {
+                    requestAnimationFrame(animate);
+                    gltf.scene.rotation.y += 0.01;
+                    renderer.render(scene, camera);
+                }
+                animate();
+            },
+            function(progress) {
+                console.log("📊 Loading progress:", (progress.loaded / progress.total * 100) + '%');
+            },
+            function(error) {
+                console.error("❌ Error loading model:", error);
+            }
+        );
+    </script>
+</body>
+</html>
