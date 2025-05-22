@@ -1,21 +1,21 @@
-# 🚀 3D Developer Portfolio
+# 🚀 Tama's Developer Portfolio
 
-A modern, animated 3D developer portfolio built with React, Three.js, TailwindCSS, and motion effects — designed to help you stand out and showcase your skills creatively.
+A modern, animated 3D developer portfolio showcasing my journey as a Computer Science student and developer. Built with React, Three.js, TailwindCSS, and motion effects — reflecting my passion for creating innovative digital solutions.
 
-![3d Portfolio Screenshot GitHub](https://github.com/user-attachments/assets/9b0ed20e-074e-4f2a-81d8-20c9da751e9e)
+![Portfolio Screenshot](https://via.placeholder.com/800x400/1a1a2e/ffffff?text=Tama%27s+Portfolio)
 
 ---
 
-## 📚 Table of Contents
+## 👨‍💻 About Me
 
-- [Features](#-features)
-- [Tech Stack](#-tech-stack)
-- [Project Structure](#-project-structure)
-- [Getting Started](#-getting-started)
-- [Assets](#-assets)
-- [Contact Me](#-contact-me)
-- [Suggestions or Feedback](#-suggestions-or-feedback)
-- [Like This Project?](#-like-this-project)
+Hi! I'm **Tama** (dasaraul), a Computer Science student from Jakarta, Indonesia, passionate about:
+- 🌐 Web Development (Laravel, PHP, HTML/CSS)
+- 📱 Mobile Development (Dart, Flutter)
+- 🎮 Game Development (AGK, Assembly)
+- 💻 System Programming (C++)
+- 💳 Payment Integration (Midtrans)
+
+Currently working at @tamstores and always open to new opportunities and collaborations!
 
 ---
 
@@ -25,24 +25,23 @@ A modern, animated 3D developer portfolio built with React, Three.js, TailwindCS
 - ⚡ Smooth transitions and scroll-based animations using **Framer Motion**
 - 🎨 Clean, responsive UI with **TailwindCSS**
 - 💌 Working contact form using **EmailJS**
-- 🧱 Beautiful UI enhancements with **Aceternity UI** and **Magic UI**
+- 🧱 Beautiful UI enhancements with custom components
 - 🚀 Lightning-fast development with **Vite**
+- 📱 Fully responsive design for all devices
 
 ---
 
 ## 🛠 Tech Stack
 
-| Tech              | Description                           |
-|-------------------|---------------------------------------|
-| React             | Front-end JavaScript library          |
-| Vite              | Fast bundler and dev environment      |
-| TailwindCSS       | Utility-first CSS framework           |
-| React Three Fiber | 3D rendering with Three.js in React   |
-| Drei              | Helpers and abstractions for R3F      |
-| Framer Motion     | Animation library for React           |
-| EmailJS           | Form handling and email integration   |
-| Aceternity UI     | Custom UI components                  |
-| Magic UI          | Prebuilt UI elements and design extras|
+| Technology        | Purpose                           |
+|-------------------|-----------------------------------|
+| React             | Frontend JavaScript library       |
+| Vite              | Fast bundler and dev environment  |
+| TailwindCSS       | Utility-first CSS framework       |
+| React Three Fiber | 3D rendering with Three.js        |
+| Drei              | Helpers and abstractions for R3F   |
+| Framer Motion     | Animation library for React       |
+| EmailJS           | Form handling and email integration|
 
 ---
 
@@ -55,10 +54,10 @@ A modern, animated 3D developer portfolio built with React, Three.js, TailwindCS
 │   └── vite.svg
 ├── src/
 │   ├── components/         # Reusable components
-│   ├── constants/          # Reusable datas
+│   ├── constants/          # Portfolio data
 │   ├── sections/           # Portfolio sections (Hero, About, etc.)
 │   ├── App.jsx             # Main app file
-│   ├── index.css           # Tailwind css
+│   ├── index.css           # Tailwind CSS
 │   └── main.jsx            # Entry point
 ├── tailwind.config.js
 └── vite.config.js
@@ -67,50 +66,102 @@ A modern, animated 3D developer portfolio built with React, Three.js, TailwindCS
 ---
 
 ## 🚀 Getting Started
-1. Clone the Repository
+
+1. **Clone the Repository**
 ```bash
-git clone https://github.com/Ali-Sanati/Portfolio.git
-cd Portfolio
+git clone https://github.com/dasaraul/portfolio.git
+cd portfolio
 ```
-2. Install Dependencies
+
+2. **Install Dependencies**
 ```bash
 npm install
 ```
-3. Run the Development Server
+
+3. **Run the Development Server**
 ```bash
 npm run dev
 ```
+
 The app will be available at http://localhost:5173.
 
----
-
-## 🔗 Assets
-Assets used in the project can be found [here](https://github.com/user-attachments/files/19820923/public.zip)
-
----
-
-## 📬 Contact Me
-[![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white)](https://www.instagram.com/ali.sanatidev/reels/) 
-[![Static Badge](https://img.shields.io/badge/Youtube-%23FF0033?style=flat&logo=youtube)](https://www.youtube.com/channel/UCZhtUWTtk3bGJiMPN9T4HWA)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/ali-sanati/) 
+4. **Build for Production**
+```bash
+npm run build
+```
 
 ---
 
-## 💡 Suggestions or Feedback?
-Leave a comment on the [YouTube video](https://youtu.be/S9UQItTpwUQ) or open an issue here on GitHub.<br/>
-👉 What should I build next?
+## 🎨 Customization
 
-- A beautiful Landing Page
+### Personal Information
+Update your personal info in `src/constants/index.js`:
+- Projects showcase
+- Social media links
+- Work experience
+- Skills and technologies
 
-- A complete E-commerce site
+### Styling
+Customize colors and themes in `src/index.css` and `tailwind.config.js`.
 
-- A fun App Clone (YouTube, Netflix, etc.)
-
-Or another interactive Portfolio
-
-Let me know!
+### 3D Models
+Replace the astronaut model in `public/models/` with your preferred 3D model.
 
 ---
 
-## ⭐ Like This Project?
-Star the repo and [subscribe](https://www.youtube.com/channel/UCZhtUWTtk3bGJiMPN9T4HWA??sub_confirmation=1) to the YouTube channel for more dev content!
+## 📂 My GitHub Projects
+
+This portfolio showcases my real projects:
+
+- **[komoditas-desa](https://github.com/dasaraul/komoditas-desa)** - Laravel CRUD system for village commodities management
+- **[kel3-resto](https://github.com/dasaraul/kel3-resto)** - Responsive restaurant website with Bootstrap
+- **[AGK-kamikaze](https://github.com/dasaraul/AGK-kamikaze)** - Classic Kamikaze game built with AGK
+- **[tamaengs-midtrans](https://github.com/dasaraul/tamaengs-midtrans)** - Midtrans payment gateway integration
+- **[cpp](https://github.com/dasaraul/cpp)** - Collection of C++ programming assignments
+- **[tugas-uts](https://github.com/dasaraul/tugas-uts)** - Dart-based biodata application
+
+---
+
+## 📬 Connect With Me
+
+[![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/ImTamaa)
+[![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://Instagram.com/tam.aspx)
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/dasaraul)
+
+---
+
+## 🌍 Location & Time Zone
+
+📍 **Jakarta, Indonesia**  
+⏰ **UTC +7 (WIB)**  
+🌐 **Available for remote work worldwide**
+
+---
+
+## 💡 Feedback & Suggestions
+
+Feel free to:
+- Open an issue for bugs or suggestions
+- Connect with me on social media
+- Reach out for collaboration opportunities
+
+---
+
+## ⭐ Show Your Support
+
+If you like this portfolio, please consider:
+- ⭐ Starring this repository
+- 🔗 Sharing it with others
+- 💬 Providing feedback
+
+---
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+---
+
+*"I may be slow to respond, but I'm always eager to learn and build amazing things!"* - Tama
+
+> This portfolio represents my journey as a developer and my commitment to continuous learning in the ever-evolving world of technology.

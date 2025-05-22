@@ -1,8 +1,32 @@
 {
-  "name": "portfolio",
+  "name": "tama-portfolio",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "Modern 3D developer portfolio showcasing Tama's projects and skills as a Computer Science student",
   "type": "module",
+  "author": {
+    "name": "Tama",
+    "email": "tama.dev@outlook.com",
+    "url": "https://github.com/dasaraul"
+  },
+  "homepage": "https://dasaraul.github.io/portfolio",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dasaraul/portfolio.git"
+  },
+  "keywords": [
+    "portfolio",
+    "react",
+    "threejs",
+    "3d",
+    "developer",
+    "student",
+    "laravel",
+    "dart",
+    "flutter",
+    "jakarta",
+    "indonesia"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
