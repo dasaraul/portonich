@@ -1,9 +1,22 @@
+import React, { memo } from "react";
 import { OrbitingCircles } from "./OrbitingCircles";
 
-export function Frameworks() {
+const Icon = memo(({ src, alt }) => (
+  <img 
+    src={src} 
+    alt={alt}
+    className="duration-200 rounded-sm hover:scale-110" 
+    loading="lazy"
+    decoding="async"
+  />
+));
+
+Icon.displayName = 'Icon';
+
+export const Frameworks = memo(() => {
   const skills = [
     "cplusplus",
-    "laravel",
+    "laravel", 
     "php",
     "dart",
     "flutter",
@@ -19,22 +32,25 @@ export function Frameworks() {
     "gamedev",
     "linux",
   ];
+
+  // Split skills for better performance
+  const primarySkills = skills.slice(0, 8);
+  const secondarySkills = skills.slice(8);
+
   return (
     <div className="relative flex h-[15rem] w-full flex-col items-center justify-center">
-      <OrbitingCircles iconSize={40}>
-        {skills.map((skill, index) => (
-          <Icon key={index} src={`assets/logos/${skill}.svg`} />
+      <OrbitingCircles iconSize={40} speed={0.5}>
+        {primarySkills.map((skill, index) => (
+          <Icon key={index} src={`assets/logos/${skill}.svg`} alt={skill} />
         ))}
       </OrbitingCircles>
-      <OrbitingCircles iconSize={25} radius={100} reverse speed={2}>
-        {skills.reverse().map((skill, index) => (
-          <Icon key={index} src={`assets/logos/${skill}.svg`} />
+      <OrbitingCircles iconSize={25} radius={100} reverse speed={1}>
+        {secondarySkills.map((skill, index) => (
+          <Icon key={index} src={`assets/logos/${skill}.svg`} alt={skill} />
         ))}
       </OrbitingCircles>
     </div>
   );
-}
+});
 
-const Icon = ({ src }) => (
-  <img src={src} className="duration-200 rounded-sm hover:scale-110" />
-);
+Frameworks.displayName = 'Frameworks';

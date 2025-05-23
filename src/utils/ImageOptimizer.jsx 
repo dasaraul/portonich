@@ -1,0 +1,37 @@
+// Image optimization utility
+export const createOptimizedImageUrl = (src, width = 800, quality = 80) => {
+  // For production, you might want to use a service like Cloudinary or ImageKit
+  // This is a simple example that could work with modern browsers
+  if (src.includes('unsplash.com')) {
+    return `${src}?w=${width}&q=${quality}&fm=webp&auto=format`;
+  }
+  
+  // For local images, you could implement WebP conversion
+  const extension = src.split('.').pop();
+  const webpSrc = src.replace(`.${extension}`, '.webp');
+  
+  return webpSrc;
+};
+
+export const preloadImage = (src) => {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = resolve;
+    img.onerror = reject;
+    img.src = src;
+  });
+};
+
+export const preloadCriticalImages = async () => {
+  const criticalImages = [
+    '/assets/coding-pov.png',
+    '/assets/sky.jpg',
+    '/assets/mountain-1.png'
+  ];
+
+  try {
+    await Promise.all(criticalImages.map(preloadImage));
+  } catch (error) {
+    console.warn('Some images failed to preload:', error);
+  }
+};

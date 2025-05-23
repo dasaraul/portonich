@@ -1,5 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap");
 @import "tailwindcss";
+
+/* Preload critical fonts */
+@font-face {
+  font-family: 'Funnel Display';
+  font-display: swap;
+}
+
 @theme {
   --color-primary: #030412;
   --color-midnight: #06091f;
@@ -14,39 +21,28 @@
   --color-orange: #cc6033;
   --color-sand: #d6995c;
   --color-coral: #ea4884;
+  
+  /* Optimized animations */
   --animate-orbit: orbit 50s linear infinite;
   @keyframes orbit {
-    0% {
-      transform: rotate(calc(var(--angle) * 1deg))
-        translateY(calc(var(--radius) * 1px)) rotate(calc(var(--angle) * -1deg));
-    }
-    100% {
-      transform: rotate(calc(var(--angle) * 1deg + 360deg))
-        translateY(calc(var(--radius) * 1px))
-        rotate(calc((var(--angle) * -1deg) - 360deg));
-    }
+    0% { transform: rotate(calc(var(--angle) * 1deg)) translateY(calc(var(--radius) * 1px)) rotate(calc(var(--angle) * -1deg)); }
+    100% { transform: rotate(calc(var(--angle) * 1deg + 360deg)) translateY(calc(var(--radius) * 1px)) rotate(calc((var(--angle) * -1deg) - 360deg)); }
   }
+  
   --animate-marquee: marquee 50s linear infinite;
   --animate-marquee-vertical: marquee-vertical 50s linear infinite;
 
   @keyframes marquee {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(calc(-100% - var(--gap)));
-    }
+    from { transform: translateX(0); }
+    to { transform: translateX(calc(-100% - var(--gap))); }
   }
 
   @keyframes marquee-vertical {
-    from {
-      transform: translateY(0);
-    }
-    to {
-      transform: translateY(calc(-100% - var(--gap)));
-    }
+    from { transform: translateY(0); }
+    to { transform: translateY(calc(-100% - var(--gap))); }
   }
 }
+
 body {
   background: #030412;
   font-family: "Funnel Display", sans-serif;
@@ -55,12 +51,39 @@ body {
   overflow-x: hidden;
 }
 
+/* Performance optimizations */
+* {
+  box-sizing: border-box;
+}
+
+/* Reduce motion for accessibility and performance */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* GPU acceleration for animations */
+.hover-animation,
+.nav-link,
+[class*="grid-"] {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
 .c-space {
   @apply sm:px-10 px-5 lg:px-15;
 }
 
 .hover-animation {
   @apply hover:-translate-y-1 duration-200;
+  backface-visibility: hidden;
+  perspective: 1000px;
 }
 
 .section-spacing {
@@ -90,27 +113,34 @@ body {
 
 .nav-link {
   @apply text-lg md:text-base hover:text-white transition-colors;
+  transform: translateZ(0);
 }
+
 /* Button Components */
 .btn {
   @apply relative px-1 py-4 text-sm text-center rounded-full font-extralight bg-primary w-[12rem] cursor-pointer overflow-hidden;
 }
 
-/* About Section */
+/* About Section - Optimized Grid */
 .grid-1 {
   @apply row-span-2 md:col-span-3 h-[15rem] md:h-full relative overflow-hidden hover:-translate-y-1 duration-200;
+  contain: layout style paint;
 }
 .grid-2 {
   @apply row-span-1 md:col-span-3 h-[15rem] md:h-full relative overflow-hidden hover:-translate-y-1 duration-200;
+  contain: layout style paint;
 }
 .grid-3 {
   @apply row-span-1 md:col-span-3 h-[15rem] md:h-full relative overflow-hidden hover:-translate-y-1 duration-200;
+  contain: layout style paint;
 }
 .grid-4 {
   @apply row-span-1 md:col-span-2 h-[15rem] md:h-full relative overflow-hidden hover:-translate-y-1 duration-200;
+  contain: layout style paint;
 }
 .grid-5 {
   @apply row-span-1 md:col-span-4 h-[15rem] md:h-full relative overflow-hidden hover:-translate-y-1 duration-200;
+  contain: layout style paint;
 }
 
 .grid-default-color {
@@ -135,4 +165,13 @@ body {
 
 .field-input-focus {
   @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/20;
+}
+
+/* Performance optimizations */
+img {
+  content-visibility: auto;
+}
+
+canvas {
+  contain: strict;
 }
