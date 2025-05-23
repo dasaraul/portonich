@@ -5,7 +5,6 @@ const ParallaxBackground = memo(() => {
   const { scrollYProgress } = useScroll();
   const x = useSpring(scrollYProgress, { damping: 50, mass: 0.5 });
   
-  // Reduced animation ranges for better performance
   const mountain3Y = useTransform(x, [0, 0.3], ["0%", "50%"]);
   const planetsX = useTransform(x, [0, 0.3], ["0%", "-15%"]);
   const mountain2Y = useTransform(x, [0, 0.3], ["0%", "20%"]);
@@ -14,7 +13,6 @@ const ParallaxBackground = memo(() => {
   return (
     <section className="absolute inset-0 bg-black/40">
       <div className="relative h-screen overflow-hidden">
-        {/* Background Sky - Using WebP if supported */}
         <div
           className="absolute inset-0 w-full h-screen -z-50"
           style={{
@@ -25,7 +23,6 @@ const ParallaxBackground = memo(() => {
           }}
         />
         
-        {/* Mountain layers with reduced complexity */}
         <motion.div
           className="absolute inset-0 -z-40"
           style={{

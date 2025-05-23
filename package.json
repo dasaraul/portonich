@@ -9,10 +9,10 @@
     "email": "tama.dev@outlook.com",
     "url": "https://github.com/dasaraul"
   },
-  "homepage": "https://dasaraul.github.io/portfolio",
+  "homepage": "https://dasaraul.github.io/portonich",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dasaraul/portfolio.git"
+    "url": "https://github.com/dasaraul/portonich.git"
   },
   "keywords": [
     "portfolio",
@@ -29,7 +29,7 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && sudo systemctl reload nginx",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -41,6 +41,7 @@
     "@tailwindcss/vite": "^4.0.7",
     "@types/three": "^0.173.0",
     "cobe": "^0.6.3",
+    "framer-motion": "^11.18.2",
     "maath": "^0.10.8",
     "motion": "^12.4.5",
     "react": "^19.0.0",
