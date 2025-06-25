@@ -12,7 +12,7 @@ const AstronautComponent = memo(function Astronaut(props) {
   let nodes, materials, animations;
   
   try {
-    const gltf = useGLTF("/models/tenhun_falling_spaceman_fanart.glb");
+    const gltf = useGLTF("./models/tenhun_falling_spaceman_fanart.glb");
     nodes = gltf.nodes;
     materials = gltf.materials;
     animations = gltf.animations;
@@ -103,6 +103,6 @@ AstronautComponent.propTypes = {
 };
 
 // Preload with error handling
-useGLTF.preload("/models/tenhun_falling_spaceman_fanart.glb");
+useGLTF.preload("./models/tenhun_falling_spaceman_fanart.glb");
 
 export { AstronautComponent as Astronaut };

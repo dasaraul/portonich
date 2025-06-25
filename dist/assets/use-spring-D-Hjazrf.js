@@ -1,0 +1,2 @@
+import{r}from"./vendor-three-CLdz-W0r.js";import{M as t}from"./index-D4NZVymS.js";import{a as s,u as o}from"./use-transform-CMAnZVoe.js";import{al as e,d as n}from"./vendor-motion-CQau5lwJ.js";function i(i,a={}){const{isStatic:f}=r.useContext(t),m=()=>n(i)?i.get():i;if(f)return s(m);const u=o(m());return r.useInsertionEffect((()=>e(u,i,a)),[u,JSON.stringify(a)]),u}export{i as u};
+//# sourceMappingURL=use-spring-D-Hjazrf.js.map

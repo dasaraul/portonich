@@ -16,7 +16,7 @@ const ParallaxBackground = memo(() => {
         <div
           className="absolute inset-0 w-full h-screen -z-50"
           style={{
-            backgroundImage: "url(/assets/sky.webp), url(/assets/sky.jpg)",
+            backgroundImage: "url(./assets/sky.jpg)",
             backgroundPosition: "bottom",
             backgroundSize: "cover",
             willChange: "transform",
@@ -26,7 +26,7 @@ const ParallaxBackground = memo(() => {
         <motion.div
           className="absolute inset-0 -z-40"
           style={{
-            backgroundImage: "url(/assets/mountain-3.webp), url(/assets/mountain-3.png)",
+            backgroundImage: "url(./assets/mountain-3.png)",
             backgroundPosition: "bottom",
             backgroundSize: "cover",
             y: mountain3Y,
@@ -37,7 +37,7 @@ const ParallaxBackground = memo(() => {
         <motion.div
           className="absolute inset-0 -z-30"
           style={{
-            backgroundImage: "url(/assets/planets.webp), url(/assets/planets.png)",
+            backgroundImage: "url(./assets/planets.png)",
             backgroundPosition: "bottom",
             backgroundSize: "cover",
             x: planetsX,
@@ -48,7 +48,7 @@ const ParallaxBackground = memo(() => {
         <motion.div
           className="absolute inset-0 -z-20"
           style={{
-            backgroundImage: "url(/assets/mountain-2.webp), url(/assets/mountain-2.png)",
+            backgroundImage: "url(./assets/mountain-2.png)",
             backgroundPosition: "bottom",
             backgroundSize: "cover",
             y: mountain2Y,
@@ -59,7 +59,7 @@ const ParallaxBackground = memo(() => {
         <motion.div
           className="absolute inset-0 -z-10"
           style={{
-            backgroundImage: "url(/assets/mountain-1.webp), url(/assets/mountain-1.png)",
+            backgroundImage: "url(./assets/mountain-1.png)",
             backgroundPosition: "bottom",
             backgroundSize: "cover",
             y: mountain1Y,

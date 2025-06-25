@@ -7,6 +7,9 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+
+  // Ensure proper base path for assets
+  base: './',
   
   build: {
     // Optimize chunk splitting
@@ -22,12 +25,12 @@ export default defineConfig({
     },
     // Enable compression
     cssCodeSplit: true,
-    sourcemap: false,
+    sourcemap: false, // Disable sourcemaps for production
     minify: 'terser',
     terserOptions: {
       compress: {
-        drop_console: true,
-        drop_debugger: true,
+        drop_console: true, // Remove console logs in production
+        drop_debugger: true, // Remove debugger statements in production
       },
     },
   },
