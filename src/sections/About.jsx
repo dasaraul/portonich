@@ -17,7 +17,7 @@ const About = () => {
             className="absolute scale-[1.75] -right-[5rem] -top-[1rem] md:scale-[3] md:left-50 md:inset-y-10 lg:scale-[2.5]"
           />
           <div className="z-10">
-            <p className="headtext">Hi, I'm Tama</p>
+            <p className="headtext">Hi, I&apos;m Tama</p>
             <p className="subtext">
               Seorang mahasiswa Computer Science yang passionate dalam mengembangkan 
               aplikasi web dan mobile. Berpengalaman dalam berbagai teknologi 
@@ -82,7 +82,7 @@ const About = () => {
           <div className="z-10 w-[50%]">
             <p className="headtext">Time Zone</p>
             <p className="subtext">
-              I'm based in Jakarta, Indonesia (UTC +7) and open to remote work worldwide
+              I&apos;m based in Jakarta, Indonesia (UTC +7) and open to remote work worldwide
             </p>
           </div>
           <figure className="absolute left-[30%] top-[10%]">

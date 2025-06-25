@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState, memo } from "react";
+import { useEffect, useRef, useState, memo } from "react";
+import PropTypes from "prop-types";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import { useMotionValue, useSpring } from "motion/react";
 import { useFrame } from "@react-three/fiber";
@@ -94,6 +95,12 @@ const AstronautComponent = memo(function Astronaut(props) {
     </group>
   );
 });
+
+// PropTypes validation
+AstronautComponent.propTypes = {
+  scale: PropTypes.number,
+  position: PropTypes.arrayOf(PropTypes.number),
+};
 
 // Preload with error handling
 useGLTF.preload("/models/tenhun_falling_spaceman_fanart.glb");

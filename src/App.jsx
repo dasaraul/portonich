@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from "react";
+import { Suspense, lazy } from "react";
 
 // Immediately load critical components
 import Navbar from "./sections/Navbar";

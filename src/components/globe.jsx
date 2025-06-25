@@ -3,6 +3,7 @@
 import createGlobe from "cobe";
 import { useMotionValue, useSpring } from "motion/react";
 import { useEffect, useRef, memo } from "react";
+import PropTypes from "prop-types";
 import { twMerge } from "tailwind-merge";
 
 const MOVEMENT_DAMPING = 1400;
@@ -32,8 +33,8 @@ const OPTIMIZED_GLOBE_CONFIG = {
 };
 
 export const Globe = memo(({ className, config = OPTIMIZED_GLOBE_CONFIG }) => {
-  let phi = 0;
-  let width = 0;
+  const phi = useRef(0);
+  const width = useRef(0);
   const canvasRef = useRef(null);
   const pointerInteracting = useRef(null);
   const pointerInteractionMovement = useRef(0);
@@ -64,7 +65,7 @@ export const Globe = memo(({ className, config = OPTIMIZED_GLOBE_CONFIG }) => {
   useEffect(() => {
     const onResize = () => {
       if (canvasRef.current) {
-        width = canvasRef.current.offsetWidth;
+        width.current = canvasRef.current.offsetWidth;
       }
     };
 
@@ -74,13 +75,13 @@ export const Globe = memo(({ className, config = OPTIMIZED_GLOBE_CONFIG }) => {
     if (canvasRef.current) {
       globeInstance.current = createGlobe(canvasRef.current, {
         ...config,
-        width: width * 2,
-        height: width * 2,
+        width: width.current * 2,
+        height: width.current * 2,
         onRender: (state) => {
-          if (!pointerInteracting.current) phi += 0.003; // Reduced rotation speed
-          state.phi = phi + rs.get();
-          state.width = width * 2;
-          state.height = width * 2;
+          if (!pointerInteracting.current) phi.current += 0.003; // Reduced rotation speed
+          state.phi = phi.current + rs.get();
+          state.width = width.current * 2;
+          state.height = width.current * 2;
         },
       });
 
@@ -125,3 +126,8 @@ export const Globe = memo(({ className, config = OPTIMIZED_GLOBE_CONFIG }) => {
 });
 
 Globe.displayName = 'Globe';
+
+Globe.propTypes = {
+  className: PropTypes.string,
+  config: PropTypes.object,
+};

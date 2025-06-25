@@ -1,5 +1,6 @@
 "use client";
-import React, { useCallback, useEffect, useState, memo } from "react";
+import { useCallback, useEffect, useState, memo } from "react";
+import PropTypes from "prop-types";
 import { AnimatePresence, motion } from "motion/react";
 import { twMerge } from "tailwind-merge";
 
@@ -75,3 +76,9 @@ export const FlipWords = memo(({ words, duration = 3000, className }) => {
 });
 
 FlipWords.displayName = 'FlipWords';
+
+FlipWords.propTypes = {
+  words: PropTypes.arrayOf(PropTypes.string).isRequired,
+  duration: PropTypes.number,
+  className: PropTypes.string,
+};

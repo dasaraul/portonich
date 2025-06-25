@@ -1,4 +1,5 @@
-import React, { memo } from "react";
+import { memo } from "react";
+import PropTypes from "prop-types";
 import { OrbitingCircles } from "./OrbitingCircles";
 
 const Icon = memo(({ src, alt }) => (
@@ -12,6 +13,11 @@ const Icon = memo(({ src, alt }) => (
 ));
 
 Icon.displayName = 'Icon';
+
+Icon.propTypes = {
+  src: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired,
+};
 
 export const Frameworks = memo(() => {
   const skills = [

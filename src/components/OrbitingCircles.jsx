@@ -1,5 +1,6 @@
+import { Children } from "react";
+import PropTypes from "prop-types";
 import { twMerge } from "tailwind-merge";
-import React from "react";
 
 export function OrbitingCircles({
   className,
@@ -30,8 +31,8 @@ export function OrbitingCircles({
           />
         </svg>
       )}
-      {React.Children.map(children, (child, index) => {
-        const angle = (360 / React.Children.count(children)) * index;
+      {Children.map(children, (child, index) => {
+        const angle = (360 / Children.count(children)) * index;
         return (
           <div
             style={{
@@ -55,3 +56,14 @@ export function OrbitingCircles({
     </>
   );
 }
+
+OrbitingCircles.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.node.isRequired,
+  reverse: PropTypes.bool,
+  duration: PropTypes.number,
+  radius: PropTypes.number,
+  path: PropTypes.bool,
+  iconSize: PropTypes.number,
+  speed: PropTypes.number,
+};

@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, memo } from "react";
+import { Suspense, lazy, memo } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Float } from "@react-three/drei";
 import { useMediaQuery } from "react-responsive";
@@ -12,7 +12,7 @@ const Astronaut = lazy(() => import("../components/Astronaut").then(module => ({
   default: module.Astronaut 
 })));
 
-const Rig = memo(() => {
+const Rig = memo(function Rig() {
   return useFrame((state, delta) => {
     easing.damp3(
       state.camera.position,

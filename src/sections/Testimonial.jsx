@@ -1,4 +1,5 @@
-import React, { memo } from "react";
+import { memo } from "react";
+import PropTypes from "prop-types";
 import { twMerge } from "tailwind-merge";
 import Marquee from "../components/Marquee";
 import { reviews } from "../constants";
@@ -33,6 +34,13 @@ const ReviewCard = memo(({ img, name, username, body }) => {
 });
 
 ReviewCard.displayName = 'ReviewCard';
+
+ReviewCard.propTypes = {
+  img: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  username: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+};
 
 const Testimonial = memo(() => {
   const firstRow = reviews.slice(0, Math.ceil(reviews.length / 2));

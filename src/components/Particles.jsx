@@ -1,5 +1,6 @@
+import PropTypes from "prop-types";
 import { twMerge } from "tailwind-merge";
-import React, { useEffect, useRef, useState, useMemo } from "react";
+import { useEffect, useRef, useState, useMemo } from "react";
 
 function MousePosition() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -30,7 +31,7 @@ export const Particles = ({
   staticity = 50,
   ease = 50,
   size = 0.4,
-  refresh = false,
+
   color = "#ffffff",
   vx = 0,
   vy = 0,
@@ -74,6 +75,7 @@ export const Particles = ({
       }
       window.removeEventListener("resize", handleResize);
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [color]);
 
   const initCanvas = () => {
@@ -202,4 +204,15 @@ export const Particles = ({
       <canvas ref={canvasRef} className="size-full" />
     </div>
   );
+};
+
+Particles.propTypes = {
+  className: PropTypes.string,
+  quantity: PropTypes.number,
+  staticity: PropTypes.number,
+  ease: PropTypes.number,
+  size: PropTypes.number,
+  color: PropTypes.string,
+  vx: PropTypes.number,
+  vy: PropTypes.number,
 };

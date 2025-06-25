@@ -1,0 +1,1 @@
+import{r}from"./vendor-three-DvxyzsjA.js";import{M as t}from"./index-C9DlPFfv.js";import{a as s,u as o}from"./use-transform-0FO_CvG6.js";import{al as e,d as n}from"./vendor-motion-nure8o_h.js";function i(i,a={}){const{isStatic:f}=r.useContext(t),m=()=>n(i)?i.get():i;if(f)return s(m);const u=o(m());return r.useInsertionEffect((()=>e(u,i,a)),[u,JSON.stringify(a)]),u}export{i as u};

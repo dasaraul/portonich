@@ -33,6 +33,40 @@ export default [
         'warn',
         { allowConstantExport: true },
       ],
+      // Allow Three.js/React Three Fiber properties
+      'react/no-unknown-property': [
+        'error',
+        {
+          ignore: [
+            'dispose',
+            'rotation',
+            'position',
+            'scale',
+            'object',
+            'geometry',
+            'material',
+            'skeleton',
+            'args',
+            'attach',
+            'castShadow',
+            'receiveShadow',
+            'intensity',
+            'color',
+            'distance',
+            'decay',
+            'penumbra',
+            'angle',
+            'target',
+            'shadow-mapSize-width',
+            'shadow-mapSize-height',
+            'shadow-camera-far',
+            'shadow-camera-left',
+            'shadow-camera-right',
+            'shadow-camera-top',
+            'shadow-camera-bottom'
+          ]
+        }
+      ],
     },
   },
 ]
