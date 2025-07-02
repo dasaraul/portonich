@@ -12,13 +12,11 @@ export default defineConfig({
   base: './',
   
   build: {
-    // Optimize chunk splitting
+    // Optimize chunk splitting for lightweight build
     rollupOptions: {
       output: {
         manualChunks: {
           'vendor-react': ['react', 'react-dom'],
-          'vendor-three': ['three', '@react-three/fiber', '@react-three/drei'],
-          'vendor-motion': ['motion', 'maath'],
           'vendor-ui': ['tailwind-merge', 'react-responsive'],
         },
       },
@@ -35,20 +33,16 @@ export default defineConfig({
     },
   },
   
-  // Optimize dependencies
+  // Optimize dependencies for faster builds
   optimizeDeps: {
     include: [
       'react',
       'react-dom',
-      'three',
-      '@react-three/fiber',
-      '@react-three/drei',
-      'motion',
       'tailwind-merge',
     ],
   },
   
-  // Server config for VPS
+  // Server config
   server: {
     host: '0.0.0.0',
     port: 3000,

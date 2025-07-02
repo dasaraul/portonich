@@ -1,114 +1,98 @@
-import { useRef } from "react";
-import Card from "../components/Card";
-import { Globe } from "../components/globe";
-import CopyEmailButton from "../components/CopyEmailButton";
-import { Frameworks } from "../components/Frameworks";
-
 const About = () => {
-  const grid2Container = useRef();
   return (
-    <section className="c-space section-spacing" id="about">
-      <h2 className="text-heading">About Me</h2>
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-6 md:auto-rows-[18rem] mt-12">
-        {/* Grid 1 */}
-        <div className="flex items-end grid-default-color grid-1">
-          <img
-            src="assets/coding-pov.png"
-            className="absolute scale-[1.75] -right-[5rem] -top-[1rem] md:scale-[3] md:left-50 md:inset-y-10 lg:scale-[2.5]"
-          />
-          <div className="z-10">
-            <p className="headtext">Hi, I&apos;m Tama</p>
-            <p className="subtext">
-              Seorang mahasiswa Computer Science yang passionate dalam mengembangkan 
-              aplikasi web dan mobile. Berpengalaman dalam berbagai teknologi 
-              dari C++ hingga Laravel dan game development.
+    <section id="about" className="py-20 bg-gray-50">
+      <div className="container mx-auto px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto">
+          {/* Section Header */}
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4">
+              About Me
+            </h2>
+            <p className="text-xl text-gray-600">
+              Passionate developer crafting digital solutions
             </p>
           </div>
-          <div className="absolute inset-x-0 pointer-evets-none -bottom-4 h-1/2 sm:h-1/3 bg-gradient-to-t from-indigo" />
-        </div>
-        {/* Grid 2 */}
-        <div className="grid-default-color grid-2">
-          <div
-            ref={grid2Container}
-            className="flex items-center justify-center w-full h-full"
-          >
-            <p className="flex items-end text-5xl text-gray-500">
-              LEARN & BUILD
-            </p>
-            <Card
-              style={{ rotate: "75deg", top: "30%", left: "20%" }}
-              text="Laravel"
-              containerRef={grid2Container}
-            />
-            <Card
-              style={{ rotate: "-30deg", top: "60%", left: "45%" }}
-              text="C++"
-              containerRef={grid2Container}
-            />
-            <Card
-              style={{ rotate: "90deg", bottom: "30%", left: "70%" }}
-              text="Dart"
-              containerRef={grid2Container}
-            />
-            <Card
-              style={{ rotate: "-45deg", top: "55%", left: "0%" }}
-              text="Bootstrap"
-              containerRef={grid2Container}
-            />
-            <Card
-              style={{ rotate: "20deg", top: "10%", left: "38%" }}
-              text="PHP"
-              containerRef={grid2Container}
-            />
-            <Card
-              style={{ rotate: "30deg", top: "70%", left: "70%" }}
-              image="assets/logos/laravel-pink.png"
-              containerRef={grid2Container}
-            />
-            <Card
-              style={{ rotate: "-45deg", top: "70%", left: "25%" }}
-              image="assets/logos/dart-pink.png"
-              containerRef={grid2Container}
-            />
-            <Card
-              style={{ rotate: "-45deg", top: "5%", left: "10%" }}
-              image="assets/logos/php-pink.png"
-              containerRef={grid2Container}
-            />
-          </div>
-        </div>
-        {/* Grid 3 */}
-        <div className="grid-black-color grid-3">
-          <div className="z-10 w-[50%]">
-            <p className="headtext">Time Zone</p>
-            <p className="subtext">
-              I&apos;m based in Jakarta, Indonesia (UTC +7) and open to remote work worldwide
-            </p>
-          </div>
-          <figure className="absolute left-[30%] top-[10%]">
-            <Globe />
-          </figure>
-        </div>
-        {/* Grid 4 */}
-        <div className="grid-special-color grid-4">
-          <div className="flex flex-col items-center justify-center gap-4 size-full">
-            <p className="text-center headtext">
-              Do you want to start a project together?
-            </p>
-            <CopyEmailButton />
-          </div>
-        </div>
-        {/* Grid 5 */}
-        <div className="grid-default-color grid-5">
-          <div className="z-10 w-[50%]">
-            <p className="headText">Tech Stack</p>
-            <p className="subtext">
-              I specialize in multiple programming languages and frameworks, 
-              from backend development with Laravel to mobile apps with Dart/Flutter
-            </p>
-          </div>
-          <div className="absolute inset-y-0 md:inset-y-9 w-full h-full start-[50%] md:scale-125">
-            <Frameworks />
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* About Content */}
+            <div className="space-y-6">
+              <h3 className="text-2xl font-bold text-gray-900">
+                Full Stack Developer & Computer Science Student
+              </h3>
+              
+              <p className="text-gray-600 leading-relaxed">
+                Hello! I'm Tama, a passionate full-stack developer and Computer Science student 
+                based in Jakarta, Indonesia. I specialize in creating modern, responsive web 
+                applications and mobile solutions that deliver exceptional user experiences.
+              </p>
+              
+              <p className="text-gray-600 leading-relaxed">
+                With expertise in React, Laravel, Flutter, and cloud technologies, I enjoy 
+                turning complex problems into simple, beautiful, and intuitive solutions. 
+                When I'm not coding, you'll find me exploring new technologies, contributing 
+                to open-source projects, or sharing knowledge with the developer community.
+              </p>
+
+              {/* Stats */}
+              <div className="grid grid-cols-2 gap-6 pt-8">
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-blue-600">15+</div>
+                  <div className="text-gray-600">Projects Completed</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-blue-600">2+</div>
+                  <div className="text-gray-600">Years Experience</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Profile Image & Info */}
+            <div className="space-y-8">
+              <div className="bg-white rounded-xl p-6 shadow-lg">
+                <div className="text-center mb-6">
+                  <div className="w-32 h-32 mx-auto bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mb-4">
+                    <span className="text-4xl font-bold text-white">T</span>
+                  </div>
+                  <h4 className="text-xl font-bold text-gray-900">Tama</h4>
+                  <p className="text-gray-600">Full Stack Developer</p>
+                </div>
+
+                {/* Quick Info */}
+                <div className="space-y-3">
+                  <div className="flex items-center text-gray-600">
+                    <svg className="w-5 h-5 mr-3 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+                    </svg>
+                    Jakarta, Indonesia
+                  </div>
+                  <div className="flex items-center text-gray-600">
+                    <svg className="w-5 h-5 mr-3 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                      <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                    </svg>
+                    tama.dev@outlook.com
+                  </div>
+                  <div className="flex items-center text-gray-600">
+                    <svg className="w-5 h-5 mr-3 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
+                    </svg>
+                    Available for projects
+                  </div>
+                </div>
+              </div>
+
+              {/* Education */}
+              <div className="bg-white rounded-xl p-6 shadow-lg">
+                <h4 className="text-lg font-bold text-gray-900 mb-4">Education</h4>
+                <div className="space-y-4">
+                  <div>
+                    <h5 className="font-semibold text-gray-800">Computer Science</h5>
+                    <p className="text-gray-600">University Student</p>
+                    <p className="text-sm text-gray-500">2022 - Present</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

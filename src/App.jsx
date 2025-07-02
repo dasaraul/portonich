@@ -1,62 +1,48 @@
 import { Suspense, lazy } from "react";
-import SmoothScroll from "./components/SmoothScroll";
-import PageTransition from "./components/PageTransition";
 
 // Immediately load critical components
 import Navbar from "./sections/Navbar";
 import Hero from "./sections/Hero";
+import About from "./sections/About";
+import Skills from "./sections/Skills";
 
 // Lazy load non-critical sections
-const About = lazy(() => import("./sections/About"));
 const Projects = lazy(() => import("./sections/Projects"));
-const Experiences = lazy(() => import("./sections/Experiences"));
-const Testimonial = lazy(() => import("./sections/Testimonial"));
 const Contact = lazy(() => import("./sections/Contact"));
 const Footer = lazy(() => import('./sections/Footer'));
 
+// Loading Component
+const LoadingSpinner = () => (
+  <div className="flex items-center justify-center min-h-[200px]">
+    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+  </div>
+);
+
 const App = () => {
   return (
-    <PageTransition>
-      <SmoothScroll>
-        <div className="relative bg-black min-h-screen overflow-x-hidden">
-          <Navbar />
-          
-          <main>
-            <section id="home">
-              <Hero />
-            </section>
-            
-            <Suspense fallback={
-              <div className="flex items-center justify-center min-h-[200px] bg-gray-900">
-                <div className="text-neutral-400 text-lg">Loading...</div>
-              </div>
-            }>
-              <section id="about" data-scroll-reveal>
-                <About />
-              </section>
-              
-              <section id="projects" data-scroll-reveal>
-                <Projects />
-              </section>
-              
-              <section id="experience" data-scroll-reveal>
-                <Experiences />
-              </section>
-              
-              <section id="testimonials" data-scroll-reveal>
-                <Testimonial />
-              </section>
-              
-              <section id="contact" data-scroll-reveal>
-                <Contact />
-              </section>
-            </Suspense>
-          </main>
-          
+    <div className="min-h-screen bg-white">
+      {/* Navigation */}
+      <Navbar />
+      
+      {/* Main Content */}
+      <main>
+        {/* Hero Section */}
+        <Hero />
+        
+        {/* About Section */}
+        <About />
+        
+        {/* Skills Section */}
+        <Skills />
+        
+        {/* Lazy Loaded Sections */}
+        <Suspense fallback={<LoadingSpinner />}>
+          <Projects />
+          <Contact />
           <Footer />
-        </div>
-      </SmoothScroll>
-    </PageTransition>
+        </Suspense>
+      </main>
+    </div>
   );
 };
 
