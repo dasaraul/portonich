@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
-import anime from 'animejs';
+import * as anime from 'animejs';
 
 const navItems = [
   { name: 'Home', href: '#home' },
@@ -72,7 +72,7 @@ const Navbar = () => {
     // Smooth scroll with anime.js
     const target = document.querySelector(href);
     if (target) {
-      anime({
+      anime.default({
         targets: 'html, body',
         scrollTop: target.offsetTop - 80,
         duration: 1000,
@@ -87,25 +87,25 @@ const Navbar = () => {
     // Animate hamburger menu
     const lines = document.querySelectorAll('.hamburger-line');
     if (!isOpen) {
-      anime({
+      anime.default({
         targets: lines[0],
         rotate: 45,
         translateY: 8,
         duration: 300
       });
-      anime({
+      anime.default({
         targets: lines[1],
         opacity: 0,
         duration: 200
       });
-      anime({
+      anime.default({
         targets: lines[2],
         rotate: -45,
         translateY: -8,
         duration: 300
       });
     } else {
-      anime({
+      anime.default({
         targets: lines,
         rotate: 0,
         translateY: 0,

@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import anime from 'animejs';
+import * as anime from 'animejs';
 import AnimatedText from '../components/AnimatedText';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -83,7 +83,7 @@ const ProjectCard = ({ project, index }) => {
   const handleMouseEnter = () => {
     setIsHovered(true);
     
-    anime({
+    anime.default({
       targets: cardRef.current,
       scale: 1.05,
       rotateY: 5,
@@ -92,7 +92,7 @@ const ProjectCard = ({ project, index }) => {
     });
 
     // Animate tech stack
-    anime({
+    anime.default({
       targets: cardRef.current.querySelectorAll('.tech-tag'),
       scale: [0.8, 1],
       opacity: [0.7, 1],
@@ -105,7 +105,7 @@ const ProjectCard = ({ project, index }) => {
   const handleMouseLeave = () => {
     setIsHovered(false);
     
-    anime({
+    anime.default({
       targets: cardRef.current,
       scale: 1,
       rotateY: 0,

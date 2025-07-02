@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { TextPlugin } from 'gsap/TextPlugin';
-import anime from 'animejs';
+import * as anime from 'animejs';
 
 gsap.registerPlugin(TextPlugin);
 
@@ -50,7 +50,7 @@ const AnimatedText = ({
         break;
 
       case 'glitch':
-        anime({
+        anime.default({
           targets: element,
           duration: 3000,
           delay,
@@ -82,7 +82,7 @@ const AnimatedText = ({
           `<span class="inline-block">${char === ' ' ? '&nbsp;' : char}</span>`
         ).join('');
 
-        anime({
+        anime.default({
           targets: element.querySelectorAll('span'),
           scale: [0, 1],
           rotate: [180, 0],
