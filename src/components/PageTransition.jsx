@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import barba from '@barba/core';
 import { gsap } from 'gsap';
-import * as anime from 'animejs';
+import { animate } from 'animejs';
 
 const PageTransition = ({ children }) => {
   const transitionRef = useRef(null);
@@ -31,7 +31,7 @@ const PageTransition = ({ children }) => {
           name: 'slide-transition',
           leave(data) {
             return new Promise((resolve) => {
-              anime.default({
+              animate({
                 targets: data.current.container,
                 translateX: '-100%',
                 opacity: 0,
@@ -43,7 +43,7 @@ const PageTransition = ({ children }) => {
           },
           enter(data) {
             return new Promise((resolve) => {
-              anime.default({
+              animate({
                 targets: data.next.container,
                 translateX: ['100%', '0%'],
                 opacity: [0, 1],
