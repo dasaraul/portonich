@@ -1,4 +1,6 @@
 import { Suspense, lazy } from "react";
+import SmoothScroll from "./components/SmoothScroll";
+import PageTransition from "./components/PageTransition";
 
 // Immediately load critical components
 import Navbar from "./sections/Navbar";
@@ -14,23 +16,47 @@ const Footer = lazy(() => import('./sections/Footer'));
 
 const App = () => {
   return (
-    <div className="container mx-auto max-w-7xl">
-      <Navbar />
-      <Hero />
-      
-      <Suspense fallback={
-        <div className="flex items-center justify-center min-h-[200px]">
-          <div className="text-neutral-400">Loading...</div>
+    <PageTransition>
+      <SmoothScroll>
+        <div className="relative bg-black min-h-screen overflow-x-hidden">
+          <Navbar />
+          
+          <main>
+            <section id="home">
+              <Hero />
+            </section>
+            
+            <Suspense fallback={
+              <div className="flex items-center justify-center min-h-[200px] bg-gray-900">
+                <div className="text-neutral-400 text-lg">Loading...</div>
+              </div>
+            }>
+              <section id="about" data-scroll-reveal>
+                <About />
+              </section>
+              
+              <section id="projects" data-scroll-reveal>
+                <Projects />
+              </section>
+              
+              <section id="experience" data-scroll-reveal>
+                <Experiences />
+              </section>
+              
+              <section id="testimonials" data-scroll-reveal>
+                <Testimonial />
+              </section>
+              
+              <section id="contact" data-scroll-reveal>
+                <Contact />
+              </section>
+            </Suspense>
+          </main>
+          
+          <Footer />
         </div>
-      }>
-        <About />
-        <Projects />
-        <Experiences />
-        <Testimonial />
-        <Contact />
-        <Footer />
-      </Suspense>
-    </div>
+      </SmoothScroll>
+    </PageTransition>
   );
 };
 
