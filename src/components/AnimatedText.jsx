@@ -1,7 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { TextPlugin } from 'gsap/TextPlugin';
-import { animate } from 'animejs';
 
 gsap.registerPlugin(TextPlugin);
 
@@ -50,47 +49,67 @@ const AnimatedText = ({
         break;
 
       case 'glitch':
-        animate({
-          targets: element,
-          duration: 3000,
-          delay,
-          loop: true,
-          direction: 'alternate',
-          easing: 'linear',
-          update: function(anim) {
-            if (anim.progress > 90) {
-              element.style.transform = `
-                translateX(${Math.random() * 2 - 1}px) 
-                translateY(${Math.random() * 2 - 1}px)
-              `;
-              element.style.textShadow = `
-                ${Math.random() * 2 - 1}px ${Math.random() * 2 - 1}px 0 #ff00ff,
-                ${Math.random() * 2 - 1}px ${Math.random() * 2 - 1}px 0 #00ffff
-              `;
-            } else {
-              element.style.transform = 'translateX(0) translateY(0)';
-              element.style.textShadow = 'none';
-            }
+        // Create glitch effect with GSAP
+        const timeline = gsap.timeline({ repeat: -1, yoyo: true });
+        timeline.to(element, {
+          duration: 0.1,
+          skewX: 70,
+          ease: "power4.inOut",
+          delay
+        }).to(element, {
+          duration: 0.04,
+          skewX: 0,
+          ease: "power4.inOut"
+        }).to(element, {
+          duration: 0.04,
+          opacity: 0
+        }).to(element, {
+          duration: 0.04,
+          opacity: 1
+        }).to(element, {
+          duration: 0.04,
+          x: -20
+        }).to(element, {
+          duration: 0.04,
+          x: 0
+        }).add(() => {
+          // Add text shadow effect
+          element.style.textShadow = `
+            2px 0 #ff00ff,
+            -2px 0 #00ffff
+          `;
+        }).to(element, {
+          duration: 0.04,
+          delay: 0.04,
+          onComplete: () => {
+            element.style.textShadow = 'none';
           }
         });
         break;
 
       case 'morphing':
-        // Split text into characters
+        // Split text into characters using GSAP
         const chars = text.split('');
         element.innerHTML = chars.map(char => 
           `<span class="inline-block">${char === ' ' ? '&nbsp;' : char}</span>`
         ).join('');
 
-        animate({
-          targets: element.querySelectorAll('span'),
-          scale: [0, 1],
-          rotate: [180, 0],
-          opacity: [0, 1],
-          duration: 1200,
-          delay: (el, i) => delay * 1000 + i * stagger * 1000,
-          easing: 'easeOutElastic(1, .8)'
-        });
+        gsap.fromTo(element.querySelectorAll('span'), 
+          {
+            scale: 0,
+            rotation: 180,
+            opacity: 0
+          },
+          {
+            scale: 1,
+            rotation: 0,
+            opacity: 1,
+            duration: 1.2,
+            delay: (i) => delay + i * stagger,
+            ease: 'elastic.out(1, 0.8)',
+            stagger: stagger
+          }
+        );
         break;
 
       default:

@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
-import { animate } from 'animejs';
 
 const navItems = [
   { name: 'Home', href: '#home' },
@@ -69,14 +68,12 @@ const Navbar = () => {
   const handleNavClick = (href) => {
     setIsOpen(false);
     
-    // Smooth scroll with anime.js
+    // Smooth scroll with native browser API
     const target = document.querySelector(href);
     if (target) {
-      animate({
-        targets: 'html, body',
-        scrollTop: target.offsetTop - 80,
-        duration: 1000,
-        easing: 'easeInOutQuart'
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
       });
     }
   };
@@ -84,33 +81,29 @@ const Navbar = () => {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
     
-    // Animate hamburger menu
+    // Animate hamburger menu with GSAP
     const lines = document.querySelectorAll('.hamburger-line');
     if (!isOpen) {
-      animate({
-        targets: lines[0],
-        rotate: 45,
-        translateY: 8,
-        duration: 300
+      gsap.to(lines[0], {
+        rotation: 45,
+        y: 8,
+        duration: 0.3
       });
-      animate({
-        targets: lines[1],
+      gsap.to(lines[1], {
         opacity: 0,
-        duration: 200
+        duration: 0.2
       });
-      animate({
-        targets: lines[2],
-        rotate: -45,
-        translateY: -8,
-        duration: 300
+      gsap.to(lines[2], {
+        rotation: -45,
+        y: -8,
+        duration: 0.3
       });
     } else {
-      animate({
-        targets: lines,
-        rotate: 0,
-        translateY: 0,
+      gsap.to(lines, {
+        rotation: 0,
+        y: 0,
         opacity: 1,
-        duration: 300
+        duration: 0.3
       });
     }
   };

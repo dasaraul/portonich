@@ -1,7 +1,6 @@
 import { useEffect, useRef } from 'react';
 import barba from '@barba/core';
 import { gsap } from 'gsap';
-import { animate } from 'animejs';
 
 const PageTransition = ({ children }) => {
   const transitionRef = useRef(null);
@@ -30,28 +29,26 @@ const PageTransition = ({ children }) => {
         {
           name: 'slide-transition',
           leave(data) {
-            return new Promise((resolve) => {
-              animate({
-                targets: data.current.container,
-                translateX: '-100%',
-                opacity: 0,
-                duration: 800,
-                easing: 'easeInOutQuart',
-                complete: resolve
-              });
+            return gsap.to(data.current.container, {
+              x: '-100%',
+              opacity: 0,
+              duration: 0.8,
+              ease: 'power2.inOut'
             });
           },
           enter(data) {
-            return new Promise((resolve) => {
-              animate({
-                targets: data.next.container,
-                translateX: ['100%', '0%'],
-                opacity: [0, 1],
-                duration: 800,
-                easing: 'easeInOutQuart',
-                complete: resolve
-              });
-            });
+            return gsap.fromTo(data.next.container, 
+              {
+                x: '100%',
+                opacity: 0
+              },
+              {
+                x: '0%',
+                opacity: 1,
+                duration: 0.8,
+                ease: 'power2.inOut'
+              }
+            );
           }
         }
       ]

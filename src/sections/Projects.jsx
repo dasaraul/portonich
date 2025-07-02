@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { animate, stagger } from 'animejs';
 import AnimatedText from '../components/AnimatedText';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -83,34 +82,37 @@ const ProjectCard = ({ project, index }) => {
   const handleMouseEnter = () => {
     setIsHovered(true);
     
-    animate({
-      targets: cardRef.current,
+    gsap.to(cardRef.current, {
       scale: 1.05,
-      rotateY: 5,
-      duration: 300,
-      easing: 'easeOutQuart'
+      rotationY: 5,
+      duration: 0.3,
+      ease: 'power2.out'
     });
 
     // Animate tech stack
-    animate({
-      targets: cardRef.current.querySelectorAll('.tech-tag'),
-      scale: [0.8, 1],
-      opacity: [0.7, 1],
-      duration: 200,
-      delay: stagger(50),
-      easing: 'easeOutElastic(1, .6)'
-    });
+    gsap.fromTo(cardRef.current.querySelectorAll('.tech-tag'), 
+      {
+        scale: 0.8,
+        opacity: 0.7
+      },
+      {
+        scale: 1,
+        opacity: 1,
+        duration: 0.2,
+        stagger: 0.05,
+        ease: 'elastic.out(1, 0.6)'
+      }
+    );
   };
 
   const handleMouseLeave = () => {
     setIsHovered(false);
     
-    animate({
-      targets: cardRef.current,
+    gsap.to(cardRef.current, {
       scale: 1,
-      rotateY: 0,
-      duration: 300,
-      easing: 'easeOutQuart'
+      rotationY: 0,
+      duration: 0.3,
+      ease: 'power2.out'
     });
   };
 
